@@ -435,9 +435,13 @@ enum RMW_PUBLIC_TYPE rmw_qos_liveliness_policy_t
   /// Explicitly asserting node liveliness is required in this case.
   /// This option is deprecated, use RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_TOPIC if your application
   /// requires to assert liveliness manually.
+#ifndef YASKAWA_MOTOMAN_MOTOPLUS1_GCC43
   RMW_DECLARE_DEPRECATED(
     RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE,
     RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE_DEPRECATED_MSG) = 2,
+#else
+    RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE = 2,
+#endif
 
   /// The signal that establishes a Topic is alive is at the Topic level. Only publishing a message
   /// on the Topic or an explicit signal from the application to assert liveliness on the Topic
